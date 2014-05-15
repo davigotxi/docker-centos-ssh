@@ -5,6 +5,7 @@ ADD sshd.conf /etc/supervisor/conf.d/sshd.conf
 
 RUN mkdir -p /var/run/sshd
 
+RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
 RUN sed -ri 's/#PermitRootLogin yes/PermitRootLogin yes/g' /etc/ssh/sshd_config
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 RUN sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config
